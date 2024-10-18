@@ -72,7 +72,7 @@ function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height)
     platforms.forEach(platform => platform.draw())
     player.update()
-    console.log(scrollOffset)
+
     //player controls
     if (keys.left.pressed && player.lastKeyPressed === 'ArrowLeft' && player.position.x > 100) {
         scrollOffset -= 5
@@ -96,6 +96,8 @@ function animate(){
             }
         });
     }
+    console.log(player.lastKeyPressed,player.velocity.x)
+
     //platform collision detection
     platforms.forEach(platform => {
         if (
@@ -145,7 +147,6 @@ addEventListener('keydown', (event) => {
         player.velocity.x = 0
         break;
       case ' ':
-        keys.left.pressed = false
         break;
       case 'x':
         break;
